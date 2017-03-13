@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        Chicago map
+        <meta charset="utf-8">
+        <meta http-equix="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="">
+        {{fullmap.js}}
+    </head>
+    <body class="bigmap">
+        <h1>Chicago Map</h1>
+
+        {{googlemap("simple-map", 41.8781, -87.6298, markers=[(41.8781, -87.6298)])}}
+        <h2>Different way to render</h2>
+        <div class="bigmap">
+            {{ fullmap.html }}
+        </div>
+    </body>
+</html>

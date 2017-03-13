@@ -1,0 +1,63 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "geometry": {
+                 "type": "Polygon",
+                 "coordinates": [
+                   [
+                        [
+                            -87.690,
+                            41.83
+                        ],
+                        [
+                            -87.7,
+                            41.83
+                        ],
+                        [
+                            -87.7,
+                            41.82
+                        ],
+                        [
+                            -87.69,
+                            41.82
+                        ]
+                    ]
+                  ]
+                },
+                "type": "Feature",
+                "id": 0,
+                "properties": {"First choro": "Aba", "2nd Choo": "Mama"}
+        },
+        {
+            "geometry":{
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [
+                        -87.7,
+                        41.83
+                    ],
+                    [
+                        -87.71,
+                        41.83
+                    ],
+                    [
+                        -87.71,
+                        41.82
+                    ],
+                    [
+                        -87.7,
+                        41.82
+                    ]
+                  ]
+                ]
+             },
+             "type": "Feature",
+             "id": 1,
+             "properties": {"First choro": "Aba", "2nd Choo": "Mama"}
+        }
+    ]
+}
+
+

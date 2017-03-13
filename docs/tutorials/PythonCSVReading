@@ -1,0 +1,37 @@
+Author: Galil Gertner
+Date: 2.27.17
+
+
+To read a csv file with python and unicodecsv:
+
+
+    import unicodecsv
+    with open('<filename>', 'rb') as f:
+         reader = unicodecsv.DictReader(f)
+         crime_data = list(reader)
+
+To read a csv file with pandas into a dataframe:
+
+    import pandas as pd
+    data = pd.read_csv('<filename>')
+
+#---- Play with the data ------------------------------------------------------
+
+    data.info() # Displays the names of the columsl
+    len(data.index) # Displays the number of rows in dataframe
+    data.shape() # Displays the "shape" of the dataframe, i.e., row x column
+    data.head() # Displays the first 5 rows of the datafram and all columns
+                # in a standard 80 char screen size
+
+    data.tail() # Displays the last 5 rows
+    data.dtypes # Display the types of data each column contains: int, bool...
+
+    print(data['<Column_Name>'].head()) # print column names of first 5 rows
+    print(data[['<Col1', 'Col2', ...'ColN'>]].head()) # Print cols, etc..
+
+#---- Filtering the data ------------------------------------------------------
+    # Display only the first 5 rows who's column value equals query
+    print(data[data.<COLUMN> == '<VALID COL TYPE>'].head())
+
+
+

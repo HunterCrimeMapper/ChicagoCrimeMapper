@@ -32,8 +32,8 @@ def get_four_corners(start_long_lat, zone_size):
         start_long = float(start_long_lat[0])
 
     NW = [start_long ,start_lat]
-    NE = [start_long + zone_size, start_lat]
-    SE = [NE[0], start_lat - zone_size]
+    NE = [start_long + zone_size[0], start_lat]
+    SE = [NE[0], start_lat - zone_size[1]]
     SW = [NW[0], SE[1]]
     return [NW, NE, SE, SW]
 
@@ -64,10 +64,12 @@ def get_local_zone_size(start_lat,
     print('number_of_zones : ', number_of_zones)
     if (number_of_zones != 0):
         delta = float(difference/number_of_zones)
-        new_zone_size = zone_size + delta
-        return new_zone_size
+        new_zone_height = zone_size + delta
+        area = (zone_size * zone_size)
+        new_zone_length = area/new_zone_height
+        return [new_zone_length, new_zone_height]
     else:
-        return zone_size
+        return [zone_size, zone_size]
 
 
 def make_geoJSON(polygons):
@@ -131,7 +133,7 @@ while i < len(coordinates):
                                             polygons,
                                             id)
             start_long_lat = [float(start_long_lat[0]),
-                              float(start_long_lat[1]) - local_zone_size]
+                              float(start_long_lat[1]) - local_zone_size[1]]
 
 
     for square in polygons:

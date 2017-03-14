@@ -48,20 +48,35 @@ def get_horizontal_zones(start_long_lat,
         corners = get_four_corners(start_long_lat, zone_size)
 
         new_polygon_list, id = append_polygon_list(corners, polygon_list, id)
-        #horizontal_zones.append(corners)
         start_long_lat = corners[1]
         list_and_id = [new_polygon_list, id]
     return list_and_id
-    #return horizontal_zones
+
+
+def get_local_zone_size(start_lat,
+                        end_lat,
+                        zone_size):
+    lat_delta = float(start_lat) - float(end_lat)
+    #import pdb; pdb.set_trace()
+    number_of_zones = int(lat_delta/(zone_size))
+    difference = lat_delta%zone_size
+    print("difference : ", difference)
+    print('number_of_zones : ', number_of_zones)
+    if (number_of_zones != 0):
+        delta = float(difference/number_of_zones)
+        new_zone_size = zone_size + delta
+        return new_zone_size
+    else:
+        return zone_size
 
 
 def make_geoJSON(polygons):
     #polygons = polygons
-    a_list = []
-    for poly in polygons:
-        a_list.append(poly)
-    string_a_list = str(a_list)
-    a_list = string_a_list[2:-2]
+    #a_list = []
+    #for poly in polygons:
+    #    a_list.append(poly)
+    #string_a_list = str(a_list)
+    #a_list = string_a_list[2:-2]
     geo_JSON = {
             "type": "FeatureCollection",
             "features": polygons
@@ -83,21 +98,21 @@ def reverse_lat_long(lat_long):
 
 #---- Main --------------------------------------------------------------------
 
-coordinates = read_coordinates("second_projection")
+coordinates = read_coordinates("../coordinate_mapping/second_projection")
 zone_size = 0.0025
 all_polygons = []
 id = 0
 i = 0
-while i < len(coordinates)-1:
+while i < len(coordinates):
     cur = coordinates[i]
-    next = coordinates[i + 1].split(',')
+    if (i != (len(coordinates) - 1)):
+        next = coordinates[i + 1].split(',')
     ending_lat = next[0]
     polygons = []
     if('|' in cur):
         cur_sections = cur.split('|')
     else :
         cur_sections = [cur]
-        #i += 1
     for section in cur_sections:
         section_range = section.split('->')
         start = section_range[0].split(',')
@@ -105,30 +120,27 @@ while i < len(coordinates)-1:
         start_long_lat = reverse_lat_long(start)
         end_long_lat = reverse_lat_long(end)
         section_zones = []
+        local_zone_size = get_local_zone_size(start_long_lat[1],
+                                                    ending_lat,
+                                                    zone_size)
         while(float(start_long_lat[1]) > float(ending_lat)):
             polygons, id = get_horizontal_zones(start_long_lat,
                                             end_long_lat[0],
                                             zone_size,
                                             polygons,
                                             id)
-            #print("The polygons", polygons)
-            #print("END THE POLYGONS")
-            #print("THE OTHER POLYGONS", polygons)
-            #section_zones.append(squares)
             start_long_lat = [float(start_long_lat[0]),
-                              float(start_long_lat[1]) - zone_size]
+                              float(start_long_lat[1]) - local_zone_size]
 
 
-    #print("polygons: ", polygons)
     for square in polygons:
         all_polygons.append(square)
-    #all_polygons.append(polygons)
     i += 1
     #the_final_file = make_geoJSON(polygons)
 #pprint.pprint(all_polygons)
 the_final_file = make_geoJSON(all_polygons)
 pprint.pprint(the_final_file)
-with open('tiny_geoJSON.json', 'w') as outfile:
+with open('../geoJSONs/tiny_even_geoJSON.json', 'w') as outfile:
         json.dump(the_final_file, outfile)
 
 

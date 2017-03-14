@@ -99,6 +99,7 @@ def reverse_lat_long(lat_long):
 #---- Main --------------------------------------------------------------------
 
 coordinates = read_coordinates("../coordinate_mapping/second_projection")
+margin_of_insignificance = 0.00001
 zone_size = 0.0025
 all_polygons = []
 id = 0
@@ -123,10 +124,10 @@ while i < len(coordinates):
         local_zone_size = get_local_zone_size(start_long_lat[1],
                                                     ending_lat,
                                                     zone_size)
-        while(float(start_long_lat[1]) > float(ending_lat)):
+        while(float(start_long_lat[1]) > float(ending_lat) + margin_of_insignificance):
             polygons, id = get_horizontal_zones(start_long_lat,
                                             end_long_lat[0],
-                                            zone_size,
+                                            local_zone_size,
                                             polygons,
                                             id)
             start_long_lat = [float(start_long_lat[0]),

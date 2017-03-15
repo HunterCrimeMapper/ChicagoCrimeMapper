@@ -1,7 +1,10 @@
 import json
 
+infile = '/Users/galil/Documents/Hunter/Spring_2017/Capstone/CrimeMapper/mapper_src/src/ChicagoCrimeMapper/api/zoning/geoJSONs/tiny_even_geoJSON.json'
+outfile = '/Users/galil/Documents/Hunter/Spring_2017/Capstone/CrimeMapper/mapper_src/src/ChicagoCrimeMapper/api/zoning/geoJSONs/JSON_with_borders.json'
+
 ##your file location here
-with open("C:\\Users\\Adnan\\Desktop\\capstone\\final_geoJSON.json", "r") as f:
+with open(infile, "r") as f:
     data = json.load(f)
 
 lle = len(data["features"])
@@ -24,7 +27,7 @@ for i in range(0, lle):
             ##if N/S or S/N border, or if E/W or W/E border w/ shared N or S
             if (curr_north == temp_south or curr_south == temp_north
                 or curr_north == temp_north and (curr_east == temp_west or curr_west == temp_east)):
-                ##if longitude between 
+                ##if longitude between
                 if (temp_east >= curr_west and temp_east <= curr_east
                     or  temp_west >= curr_west and temp_west <= curr_east):
                     temp_id = data["features"][x]["id"]
@@ -33,6 +36,6 @@ for i in range(0, lle):
     data["features"][i]["geometry"].update({"neighbors": matches})
 
 ##output file here
-with open ("C:\\Users\\Adnan\\Desktop\\capstone\\bordernew.json", "w") as f:
+with open (outfile, "w") as f:
     json.dump(data, f, sort_keys = True, indent = 4, ensure_ascii = False)
-    
+

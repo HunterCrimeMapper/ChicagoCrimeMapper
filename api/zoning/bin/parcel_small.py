@@ -102,7 +102,7 @@ def reverse_lat_long(lat_long):
 
 coordinates = read_coordinates("../coordinate_mapping/third_projection")
 margin_of_insignificance = 0.00001
-zone_size = 0.005
+zone_size = 0.0075
 all_polygons = []
 id = 0
 i = 0

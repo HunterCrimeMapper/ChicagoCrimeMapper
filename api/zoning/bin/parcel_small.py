@@ -60,25 +60,24 @@ def get_local_zone_size(start_lat,
     #import pdb; pdb.set_trace()
     number_of_zones = int(lat_delta/(zone_size))
     difference = lat_delta%zone_size
+    area = (zone_size * zone_size)
     print("difference : ", difference)
     print('number_of_zones : ', number_of_zones)
     if (number_of_zones != 0):
         delta = float(difference/number_of_zones)
         new_zone_height = zone_size + delta
-        area = (zone_size * zone_size)
         new_zone_length = area/new_zone_height
-        return [new_zone_length, new_zone_height]
+        if difference == 0:
+            return [zone_size, zone_size]
     else:
-        return [zone_size, zone_size]
+        if difference == 0:
+            return [zone_size, zone_size]
+        new_zone_height = lat_delta
+        new_zone_length = area/new_zone_height
+    return [new_zone_length, new_zone_height]
 
 
 def make_geoJSON(polygons):
-    #polygons = polygons
-    #a_list = []
-    #for poly in polygons:
-    #    a_list.append(poly)
-    #string_a_list = str(a_list)
-    #a_list = string_a_list[2:-2]
     geo_JSON = {
             "type": "FeatureCollection",
             "features": polygons

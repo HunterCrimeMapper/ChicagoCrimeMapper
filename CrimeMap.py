@@ -3,7 +3,7 @@ import pandas as pd
 
 
 geo_path = r'tiny_even_geoJSON.json'
-zone_value = r'zone_score.csv'
+zone_value = r'zone_score2.csv'
 zone_data = pd.read_csv(zone_value)
 
 
@@ -28,7 +28,7 @@ crime_map = folium.Map(location=[41.889179863, -87.633110109],width= '100%',
 
 crime_map.choropleth(geo_path=geo_path, data = zone_data, columns=['ID', 'value'],
 	threshold_scale=[1, 2, 3, 4, 5, 6], key_on ='feature.id',
-	fill_color= 'BuPu', fill_opacity=0.7, line_opacity=0.2, legend_name='Zone Scores')
+	fill_color= 'YlOrRd', fill_opacity=0.7, line_opacity=0.2, legend_name='Zone Scores')
 
 '''
 crime_map.choropleth(geo_path=geo_path)
@@ -55,8 +55,8 @@ html_str= """
     <div class="container">
   <h2>Crime Mapper</h2>
   <p>Select the crime types you would like to see the data of.</p>
-                                        
-  
+
+
   <div class="dropdown">
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Crime Types
     <span class="caret"></span></button>
@@ -101,7 +101,7 @@ html_str= """
 """
 
 
-iframe = folium.element.IFrame(html = html_str, width=300, height=200)
+iframe = folium.IFrame(html = html_str, width=300, height=200)
 popup = folium.Popup(iframe, max_width=2650)
 
 

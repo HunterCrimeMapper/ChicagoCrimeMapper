@@ -7,21 +7,21 @@ zone_value = r'zone_score2.csv'
 zone_data = pd.read_csv(zone_value)
 
 
-def getColor(d):
-	if d >= 6.0:
-		color = '#de2d26'
-	elif d >= 5.0:
-		color = '#fc9272'
-	elif d >= 4.0:
-		color = '#9ecae1'
-	elif d >= 3.0:
-		color = '#a1d99b'
-	elif d >= 2.0:
-		color= '#f7fcb9'
-	elif d >= 1.0:
-		color= '#FFFFFF'
-	return color
-
+#def getColor(d):
+#	if d >= 6.0:
+#		color = '#de2d26'
+#	elif d >= 5.0:
+#		color = '#fc9272'
+#	elif d >= 4.0:
+#		color = '#9ecae1'
+#	elif d >= 3.0:
+#		color = '#a1d99b'
+#	elif d >= 2.0:
+#		color= '#f7fcb9'
+#	elif d >= 1.0:
+#		color= '#FFFFFF'
+#	return color
+#
 
 crime_map = folium.Map(location=[41.889179863, -87.633110109],width= '100%',
 				height='100%')

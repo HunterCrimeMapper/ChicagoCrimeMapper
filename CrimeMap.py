@@ -4,8 +4,12 @@ import pandas as pd
 
 geo_path = r'tiny_even_geoJSON.json'
 zone_value = r'zone_score.csv'
-zone_data = pd.read_csv(zone_value)
 
+geo_path1 = r'geo_coord.json'
+zone_value1 = r'zone_test.csv'
+
+zone_data = pd.read_csv(zone_value)
+zone_data1 = pd.read_csv(zone_value1)
 
 def getColor(d):
 	if d >= 6.0:
@@ -29,12 +33,16 @@ crime_map.choropleth(geo_path=geo_path, data = zone_data, columns=['ID', 'value'
 	threshold_scale=[1, 2, 3, 4, 5, 6], key_on ='feature.id',
 	fill_color= 'BuPu', fill_opacity=0.7, line_opacity=0.2, legend_name='Zone Scores')
 
+crime_map.choropleth(geo_path=geo_path1, data = zone_data1, columns=['ID', 'value'],
+    threshold_scale=[1, 2, 3, 4, 5, 6], key_on ='feature.id',
+    fill_color= 'BuPu', fill_opacity=0.7, line_opacity=0.2, legend_name='Zone Scores')
+
 '''
 crime_map.choropleth(geo_path=geo_path)
 
-crime_map.add_child(folium.GeoJson(data=open('tiny_even_geoJSON.json'),
+crime_map.add_child(folium.GeoJson(geo_path=geo_pathm, data=open('zone_score.csv'),
 	name= "zones",
-	style_function= lambda x: {'fill_color': '#de2d26' if x[]}
+	style_function= lambda x: {'fill_color': '#de2d26' if 6 <= x['properties']['value'] else '#fc9272' if 5 <= x['properties']['value']}
 	))
 '''
 

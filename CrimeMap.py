@@ -23,8 +23,7 @@ def getColor(d):
 	return color
 
 
-crime_map = folium.Map(location=[41.889179863, -87.633110109],width= '100%',
-				height='100%')
+crime_map = folium.Map(location=[41.889179863, -87.633110109])
 
 crime_map.choropleth(geo_path=geo_path, data = zone_data, columns=['ID', 'value'],
 	threshold_scale=[1, 2, 3, 4, 5, 6], key_on ='feature.id',

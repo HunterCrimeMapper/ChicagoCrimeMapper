@@ -1,0 +1,38 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+	
+	
+	<style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:relative;top:0;bottom:0;right:0;left:30%;}</style>
+
+    <style>#menu {position:fixed;}</style>
+		
+	<script src='jquery.js'></script>
+	
+	<script>
+		$(function(){
+			$("#map").load("map.html");
+		});
+
+		$(function(){
+			$("#menu").load("test.html");
+		});
+	</script>
+	
+</head>
+<body>
+	<div class ="container">	
+		<div id ="menu">
+			<object type="text/html" data="test.html" width="100%" height="100%"></object>
+		</div>
+		
+	
+		<div id= "map" >	
+			<object type="text/html" data="map.html" width="100%" height="100%" z-index="-1"></object>
+
+		</div>
+	</div>
+
+</body>
+</html>

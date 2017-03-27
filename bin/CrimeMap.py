@@ -30,4 +30,4 @@ crime_map.add_child(folium.GeoJson(data=open('tiny_even_geoJSON.json'),
 
 
 crime_map.add_child(folium.LayerControl())
-crime_map.save(outfile ='./templates/map.html')
+crime_map.save(outfile ='./templates/new_html.html')

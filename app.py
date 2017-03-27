@@ -15,7 +15,7 @@ def mapview():
         lng = -87.6298,
         markers =[(41.8781, -87.6298), (41.8783, -87.6398)]
     )
-    return render_template('map.html', fullmap=fullmap)
+    return render_template('new_html.html', fullmap=fullmap)
 
 
 

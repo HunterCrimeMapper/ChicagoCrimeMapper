@@ -13,7 +13,7 @@ dict_file = "/Users/galil/Documents/Hunter/Spring_2017/Capstone/CrimeMapper/mapp
 
 zone_checker = ZoneChecker(geoJSON_file)
 zone_checker.make_section_dictionary()
-zone = zone_checker.get_zone_number((-87.675, 42.020))
+zone = zone_checker.get_zone_number((-87.675, 41.720))
 
 print("That coordinate is in zone: ", zone)
 

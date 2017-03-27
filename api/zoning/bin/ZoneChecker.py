@@ -53,14 +53,15 @@ class ZoneChecker(object):
 
 
 
-    def get_section_number(coordinate):
-        for i in range(0, sec_len):
+    def get_section_number(self, coordinate):
+        sections = self.get_sections()
+        for i in range(0, len(sections)):
             if (coordinate <= sections[i] and coordinate > sections[i+1]):
                 return i
 
 
-    def get_zone_number(crime_coordinates):
-        section = get_section_number(crime_coordinate[1])
+    def get_zone_number(self, crime_coordinates):
+        section = self.get_section_number(crime_coordinates[1])
         for zone in self.dictionary_of_sections[section]:
             N_border = zone['geometry']['coordinates'][0][0][1]
             S_border = zone['geometry']['coordinates'][0][2][1]
@@ -71,25 +72,25 @@ class ZoneChecker(object):
                 crime_coordinates[0] >= W_border and
                 crime_coordinates[0] < E_border):
 
-                return zone_number
+                return zone
 
 
-    def load_file():
+    def load_file(self):
         with open(self.file_location, "r") as f:
             data = json.load(f)
 
         return data
 
 
-    def make_section_dictionary():
-        data = load_file()
+    def make_section_dictionary(self):
+        data = self.load_file()
         j_len = len(data["features"])
-        sec_len = len(get_sections())
+        sec_len = len(self.get_sections())
 
         for i in range (0, j_len-1):
             curr_lat = data["features"][i]["geometry"]["coordinates"][0][0][1]
             curr_id =  data['features'][i]['id']
-            sec_num = get_section_number(curr_lat)
+            sec_num = self.get_section_number(curr_lat)
             if sec_num not in self.dictionary_of_sections:
                 self.dictionary_of_sections[sec_num] = list()
             self.dictionary_of_sections[sec_num].append(data['features'][i])
@@ -97,7 +98,7 @@ class ZoneChecker(object):
 
     def save_section_dictionary(self, outfile):
         with open(outfile, 'w') as f:
-            json.dumps(self.dictionary_of_sections, f, sort_key = True)
+            json.dumps(self.dictionary_of_sections, f)
 
 
 ###your destionation here

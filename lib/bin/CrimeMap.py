@@ -2,9 +2,9 @@ import folium
 import pandas as pd
 
 
-geo_path = r'tiny_even_geoJSON.json'
+geo_path = r'/Users/galil/src/crime_mapper/lib/api/zoning/geoJSONs/tiny_even_geoJSON.json'
 
-zone_value = r'zone_score.csv'
+zone_value = r'/Users/galil/src/crime_mapper/zone_scores/choro_score.csv'
 
 
 zone_data = pd.read_csv(zone_value)
@@ -30,4 +30,4 @@ crime_map.add_child(folium.GeoJson(data=open('tiny_even_geoJSON.json'),
 
 
 crime_map.add_child(folium.LayerControl())
-crime_map.save(outfile ='./templates/new_html.html')
+crime_map.save(outfile ='../../templates/new_html.html')

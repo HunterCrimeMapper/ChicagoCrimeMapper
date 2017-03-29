@@ -62,6 +62,8 @@ class ZoneChecker(object):
 
     def get_zone_number(self, crime_coordinates):
         section = self.get_section_number(crime_coordinates[1])
+        if section is None:
+            return -1
         for zone in self.dictionary_of_sections[section]:
             N_border = zone['geometry']['coordinates'][0][0][1]
             S_border = zone['geometry']['coordinates'][0][2][1]
@@ -71,9 +73,9 @@ class ZoneChecker(object):
                 crime_coordinates[1] > S_border and
                 crime_coordinates[0] >= W_border and
                 crime_coordinates[0] < E_border):
-
                 return zone
 
+        return -1
 
     def load_file(self):
         with open(self.file_location, "r") as f:
@@ -98,7 +100,9 @@ class ZoneChecker(object):
 
     def save_section_dictionary(self, outfile):
         with open(outfile, 'w') as f:
-            json.dumps(self.dictionary_of_sections, f)
+            json.dumps(self.dictionary_of_sections, f,
+                       sort_keys=True, indent=4, separators=(',', ': '))
+
 
 
 ###your destionation here

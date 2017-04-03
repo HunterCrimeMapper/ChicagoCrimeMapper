@@ -1,7 +1,7 @@
 import json
 
 ##your file location here
-with open("/Users/galil/Documents/Hunter/Spring_2017/Capstone/CrimeMapper/mapper_src/src/ChicagoCrimeMapper/tiny_even_geoJSON.json", "r") as f:
+with open("/Users/galil/src/crime_mapper/lib/api/zoning/geoJSONs/tiny_even_geoJSON.json", "r") as f:
     data = json.load(f)
 
 lle = len(data["features"])
@@ -33,6 +33,6 @@ for i in range(0, lle):
     data["features"][i]["geometry"].update({"neighbors": matches})
 
 ##output file here
-with open ("/Users/galil/Documents/Hunter/Spring_2017/Capstone/CrimeMapper/mapper_src/src/ChicagoCrimeMapper/whateverThisIs", "w") as f:
+with open ("/Users/galil/src/crime_mapper/lib/api/zoning/geoJSONs/tiny_even_neighbors.json", "w") as f:
     json.dump(data, f, sort_keys = True, indent = 4, ensure_ascii = False)
 

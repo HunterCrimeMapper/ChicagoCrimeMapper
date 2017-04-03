@@ -15,7 +15,7 @@ def mapview():
         lng = -87.6298,
         markers =[(41.8781, -87.6298), (41.8783, -87.6398)]
     )
-    return render_template('OSM_bootstrap.html')
+    return render_template('test_bootstrap.html')
     #return render_template('OSM_bootstrap.html', fullmap=fullmap)
 
 @app.route('/get_map')

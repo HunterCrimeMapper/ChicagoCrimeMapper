@@ -17,9 +17,10 @@ def mapview():
     )
     return render_template('OSM_bootstrap.html', fullmap=fullmap)
 
-@app.route('/')
-def show_map():
-    return flask.send_file('/new_html.html')
+@app.route('/get_map')
+def get_map():
+    return render_template('new_html.html')
+    #return flask.send_file('new_html.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

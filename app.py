@@ -15,9 +15,11 @@ def mapview():
         lng = -87.6298,
         markers =[(41.8781, -87.6298), (41.8783, -87.6398)]
     )
-    return render_template('new_html.html', fullmap=fullmap)
+    return render_template('OSM_bootstrap.html', fullmap=fullmap)
 
-
+@app.route('/')
+def show_map():
+    return flask.send_file('/new_html.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

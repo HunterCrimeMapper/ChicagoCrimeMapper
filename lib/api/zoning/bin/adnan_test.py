@@ -10,12 +10,12 @@ j_len = len(data["features"])
 filtered_scores = {}
 for i in range (0, j_len):
     curr_id = data["features"][i]["id"]
-    tot_score = scores[str(curr_id)]
+    tot_score = scores[str(curr_id - 1)]
     neighbors = len(data["features"][i]["geometry"]["neighbors"])
     #import pdb; pdb.set_trace()
     for neighbor in data["features"][i]["geometry"]["neighbors"]:
-        tot_score += scores[str(neighbor)]
+        tot_score += scores[str(neighbor - 1)]
     avg_score = tot_score / (neighbors + 1)
     filtered_scores[str(curr_id)] = avg_score
 with open(outfile, "w") as f:
-    json.dump(scores, f, sort_keys = True, indent = 4, ensure_ascii = False)
+    json.dump(filtered_scores, f, sort_keys = True, indent = 4, ensure_ascii = False)

@@ -4,7 +4,7 @@ import pandas as pd
 
 geo_path = r'/Users/galil/src/crime_mapper/lib/api/zoning/geoJSONs/tiny_even_geoJSON.json'
 
-zone_value = r'/Users/galil/src/crime_mapper/zone_scores/choro_score.csv'
+zone_value = r'/Users/galil/src/crime_mapper/zone_scores/choro_smear_score.csv'
 
 
 zone_data = pd.read_csv(zone_value)

@@ -25,7 +25,7 @@ tally_file_path = '/Users/galil/src/crime_mapper/zone_scores/'
 
 
 
-with open(tally_file_path + 'filtered_thefts_2016.json', 'r') as f:
+with open(tally_file_path + 'zone_thefts2_2016.json', 'r') as f:
     data =  json.load(f)
 
 for line in range(1, len(data)):
@@ -35,7 +35,7 @@ for line in range(1, len(data)):
     data[str(line)] = score
     print("{},{}" .format(line, data[str(line)]))
 
-with open(tally_file_path + 'choro_smear_score.csv', 'w') as outfile:
+with open(tally_file_path + 'experimental_score.csv', 'w') as outfile:
     outfile.write('ID,value\n')
     for line in (range(1, len(data))):
 

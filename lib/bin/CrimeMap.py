@@ -43,4 +43,4 @@ crime_map.choropleth(geo_path=geo_path,
 
 #crime_map.add_child(feature_group)
 #folium.LayerControl().add_to(crime_map)
-crime_map.save(outfile ='../../templates/new_html.html')
+crime_map.save(outfile ='../../templates/bin_search_html.html')

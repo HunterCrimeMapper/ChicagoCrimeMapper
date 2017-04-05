@@ -2,7 +2,7 @@ import folium
 import pandas as pd
 import json
 
-geo_path = r'/Users/galil/src/crime_mapper/lib/api/zoning/geoJSONs/tiny_even_geoJSON.json'
+geo_path = r'/Users/galil/src/crime_mapper/lib/api/zoning/geoJSONs/tiny_broad_geoJSON.json'
 
 zone_value = r'/Users/galil/src/crime_mapper/zone_scores/choro_smear_score.csv'
 

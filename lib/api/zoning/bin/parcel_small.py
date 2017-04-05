@@ -99,7 +99,7 @@ def reverse_lat_long(lat_long):
 
 #---- Main --------------------------------------------------------------------
 
-coordinates = read_coordinates("../coordinate_mapping/third_projection")
+coordinates = read_coordinates("../coordinate_mapping/fourth_projection")
 margin_of_insignificance = 0.00001
 zone_size = 0.005
 all_polygons = []
@@ -142,7 +142,7 @@ while i < len(coordinates):
 #pprint.pprint(all_polygons)
 the_final_file = make_geoJSON(all_polygons)
 pprint.pprint(the_final_file)
-with open('../geoJSONs/tiny_even_geoJSON.json', 'w') as outfile:
+with open('../geoJSONs/tiny_broad_geoJSON.json', 'w') as outfile:
         json.dump(the_final_file, outfile)
 
 

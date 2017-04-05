@@ -9,7 +9,7 @@ import pandas as pd
 #---- Main --------------------------------------------------------------------
 crime_data = "/Users/galil/Documents/Hunter/Spring_2017/Capstone/Data/Crimes_THEFT_2016-Present.csv"
 
-geoJSON_file = "/Users/galil/src/crime_mapper/lib/api/zoning/geoJSONs/tiny_even_geoJSON.json"
+geoJSON_file = "/Users/galil/src/crime_mapper/lib/api/zoning/geoJSONs/tiny_wide_bound_geoJSON.json"
 
 outfile = "/Users/galil/src/crime_mapper/zone_scores/zone_thefts2_2016.json"
 

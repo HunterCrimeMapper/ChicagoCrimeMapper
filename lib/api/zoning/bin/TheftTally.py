@@ -75,8 +75,12 @@ class TheftTally(object):
             long = df.loc[crime]['Longitude']
             long_lat = (long, lat)
             zone = self.get_zone(long_lat)
-            import pdb; pdb.set_trace()
+            #if (int(crime) == 96):
+                #import pdb; pdb.set_trace()
+            if zone is None:
+                print("Long_lat {} is outside our geoJSON: ".format(long_lat))
             if zone is not None and zone is not -1:
+                print("inside")
                 tally = self.zone_scores[zone['id']]
                 self.zone_scores.update({zone['id']: (tally + 1)})
                 #tally = self.zone_scores[zone]

@@ -23,5 +23,5 @@ def get_map():
     return render_template('new_html.html')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0')
 

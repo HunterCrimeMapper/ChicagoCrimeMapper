@@ -1,5 +1,8 @@
 <!doctype html>
 
+<!-- google font -->
+<link href="https://fonts.googleapis.com/css?family=Palanquin+Dark" rel="stylesheet">
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -11,6 +14,7 @@
 
 <!-- Include Required Prerequisites -->
 <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/2.0.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
  
@@ -22,7 +26,7 @@
 
 <div class="container">
 	<center>
-		<h1 style="color:white">Chicago Crime Mapper</h1> 
+		<h1 style="color:white; font-family:'Palanquin Dark', sans-serif; font-weight:bold;">CHICAGO CRIME MAPPER</h1> 
 		<p style="color:white">An interactive heat map detailing crime statistics in Chicago </p>
 	</center>
 </div>
@@ -44,15 +48,46 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <div class="dropdown">
-  		<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-  			<span class="caret"></span></button>
-  		<ul class="dropdown-menu">
-    		        <li><a href="#">HTML</a></li>
-    			<li><a href="#">CSS</a></li>
-    			<li><a href="#">JavaScript</a></li>
-  		</ul>
-	</div>
+		<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-haspopup="true" aria-expanded="false">Crime Types <span class="caret"></span></a>
+          <ul class="dropdown-menu" style="height:auto; max-height:200px; overflow-x:hidden;">
+            <li><a href="#" class="small" data-value="Arson" tabIndex="-1"><input type="checkbox"/> Arson</a></li>
+			<li><a href="#" class="small" data-value="Assault" tabIndex="-1"><input type="checkbox"/> Assault</a></li>
+			<li><a href="#" class="small" data-value="Battery" tabIndex="-1"><input type="checkbox"/> Battery</a></li>
+			<li><a href="#" class="small" data-value="Burglary" tabIndex="-1"><input type="checkbox"/> Burglary</a></li>
+			<li><a href="#" class="small" data-value="Concealed Carry License Violation" tabIndex="-1"><input type="checkbox"/> Concealed Carry License Violation</a></li>
+			<li><a href="#" class="small" data-value="Criminal Sexual Assault" tabIndex="-1"><input type="checkbox"/> Criminal Sexual Assault</a></li>
+			<li><a href="#" class="small" data-value="Criminal Damage" tabIndex="-1"><input type="checkbox"/> Criminal Damage</a></li>
+			<li><a href="#" class="small" data-value="Criminal Trespass" tabIndex="-1"><input type="checkbox"/> Criminal Trespass</a></li>
+			<li><a href="#" class="small" data-value="Deceptive Practice" tabIndex="-1"><input type="checkbox"/> Deceptive Practice</a></li>
+			<li><a href="#" class="small" data-value="Domestic Violence" tabIndex="-1"><input type="checkbox"/> Domestic Violence</a></li>
+			<li><a href="#" class="small" data-value="Gambling" tabIndex="-1"><input type="checkbox"/> Gambling</a></li>
+			<li><a href="#" class="small" data-value="Homicide" tabIndex="-1"><input type="checkbox"/> Homicide</a></li>
+			<li><a href="#" class="small" data-value="Human Trafficking" tabIndex="-1"><input type="checkbox"/> Human Trafficking</a></li>
+			<li><a href="#" class="small" data-value="Interference With Public Officer" tabIndex="-1"><input type="checkbox"/> Interference With Public Officer</a></li>
+			<li><a href="#" class="small" data-value="Intimidation" tabIndex="-1"><input type="checkbox"/> Intimidation</a></li>
+			<li><a href="#" class="small" data-value="Kidnapping" tabIndex="-1"><input type="checkbox"/> Kidnapping</a></li>
+			<li><a href="#" class="small" data-value="Liquor Law Violation" tabIndex="-1"><input type="checkbox"/> Liquor Law Violation</a></li>
+			<li><a href="#" class="small" data-value="Motor Vehicle Theft" tabIndex="-1"><input type="checkbox"/> Motor Vehicle Theft</a></li>
+			<li><a href="#" class="small" data-value="Narcotics" tabIndex="-1"><input type="checkbox"/> Narcotics</a></li>
+			<li><a href="#" class="small" data-value="Non - Criminal" tabIndex="-1"><input type="checkbox"/> Non - Criminal</a></li>
+			<li><a href="#" class="small" data-value="Non-Criminal" tabIndex="-1"><input type="checkbox"/> Non-Criminal</a></li>
+			<li><a href="#" class="small" data-value="Non-Criminal (Subject Specified)" tabIndex="-1"><input type="checkbox"/> Non-Criminal (Subject Specified)</a></li>
+			<li><a href="#" class="small" data-value="Obscenity" tabIndex="-1"><input type="checkbox"/> Obscenity</a></li>
+			<li><a href="#" class="small" data-value="Offense Involving Children" tabIndex="-1"><input type="checkbox"/> Offense Involving Children</a></li>
+			<li><a href="#" class="small" data-value="Other Narcotic Violation" tabIndex="-1"><input type="checkbox"/> Other Narcotic Violation</a></li>
+			<li><a href="#" class="small" data-value="Other Offense" tabIndex="-1"><input type="checkbox"/> Other Offense</a></li>
+			<li><a href="#" class="small" data-value="Prostitution" tabIndex="-1"><input type="checkbox"/> Prostitution</a></li>
+			<li><a href="#" class="small" data-value="Public Indecency" tabIndex="-1"><input type="checkbox"/> Public Indecency</a></li>
+			<li><a href="#" class="small" data-value="Public Peace Violation" tabIndex="-1"><input type="checkbox"/> Public Peace Violation</a></li>
+			<li><a href="#" class="small" data-value="Ritualism" tabIndex="-1"><input type="checkbox"/> Ritualism</a></li>
+			<li><a href="#" class="small" data-value="Robbery" tabIndex="-1"><input type="checkbox"/> Robbery</a></li>
+			<li><a href="#" class="small" data-value="Sex Offense" tabIndex="-1"><input type="checkbox"/> Sex Offense</a></li>
+			<li><a href="#" class="small" data-value="Stalking" tabIndex="-1"><input type="checkbox"/> Stalking</a></li>
+			<li><a href="#" class="small" data-value="Theft" tabIndex="-1"><input type="checkbox"/> Theft</a></li>
+			<li><a href="#" class="small" data-value="Weapons Violation" tabIndex="-1"><input type="checkbox"/> Weapons Violation</a></li>
+          </ul>
+        </li>
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">

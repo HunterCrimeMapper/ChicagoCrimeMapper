@@ -5,6 +5,7 @@
  	{	
  		"id": 1,
  		"type": "Feature", 
+   "properties": {},
  		"geometry": {
  			"type": "Polygon", 
  			"coordinates": [[

@@ -3,8 +3,8 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "type": "Feature",
       "id":1,
+      "type": "Feature",
       "properties": {
       },
       "geometry": {
@@ -22,8 +22,8 @@
     
    },
    {
+    "id": 2,
    	"type": "Feature", 
-   	"id": 2, 
    	"properties": {}, 
    	"geometry": {
    		"type": "Polygon", 

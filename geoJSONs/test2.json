@@ -23,9 +23,9 @@
     
    },
    {
-    
+    "id": "2";
    	"type": "Feature", 
-   	"properties": {"id": "2"}, 
+   	"properties": {}, 
    	"geometry": {
    		"type": "Polygon", 
    		"coordinates": [

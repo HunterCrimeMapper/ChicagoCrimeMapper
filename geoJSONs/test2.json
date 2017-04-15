@@ -3,7 +3,7 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id":1,
+      "id":"1",
       "type": "Feature",
       "properties": {
       },
@@ -22,7 +22,7 @@
     
    },
    {
-    "id": 2,
+    "id": "2",
    	"type": "Feature", 
    	"properties": {}, 
    	"geometry": {

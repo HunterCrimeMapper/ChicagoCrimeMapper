@@ -96,33 +96,7 @@
 			return file;
 		})();
 		
-	function getColorID(id){
-			var color;
-
-			for(var i =0; i< data.length; i++){
-				if(data[i].ID == id){
-					if (data[i].value >5.9){
-					    color ='#800026';
-					}
-					else if (data[i].value >4.9){
-					    color ='#e31a1c';
-					}
-					else if (data[i].value > 3.9) {
-						color ='#fc4e2a'; 
-					}
-					else if (data[i].value > 2.9) {
-					    color ='#fd8d3c';
-					}
-					else if(data[i].value > 1.9) {
-						color ='#feb24c';
-					}
-					else {
-					    color ='#fed976';
-					}
-				}
-			}
-			return color;
-		}
+	
 		function initMap(){
 			var locat = {lat:41.889179863, lng:-87.633110109};
 			map = new google.maps.Map(document.getElementById('map'),{

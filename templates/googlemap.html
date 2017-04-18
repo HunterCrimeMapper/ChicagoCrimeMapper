@@ -121,14 +121,14 @@
 
 	        var percent;
 
-	        var zoneid = e.feature.getProperty('id');
+	        var zoneid = e.feature.getId('id');
 	        zoneid= zoneid-1;
 	        var score = data[zoneid].value;
 
 			percent= (score*100)/6;
 
 	        document.getElementById('data-id').textContent =
-      		e.feature.getProperty('id');
+      		e.feature.getId('id');
       		document.getElementById('data-score').textContent =
       score.toLocaleString();
   			document.getElementById('data-box').style.display = 'block';
@@ -142,22 +142,22 @@
 		}
 		function styleFeature(feature){
 	        	var color = 'gray';
-	        	var zoneid = feature.getProperty('id');
+	        	var zoneid = feature.getId('id');
 	        	for(var i =0; i< data.length; i++){
 					if(data[i].ID == zoneid){
-						if (data[i].value >5.9){
+						if (data[i].value >4.9){
 						    color ='#800026';
 						}
-						else if (data[i].value >4.9){
+						else if (data[i].value >3.9){
 						    color ='#e31a1c';
 						}
-						else if (data[i].value > 3.9) {
+						else if (data[i].value > 2.9) {
 							color ='#fc4e2a';
 						}
-						else if (data[i].value > 2.9) {
+						else if (data[i].value > 1.9) {
 						    color ='#fd8d3c';
 						}
-						else if(data[i].value > 1.9) {
+						else if(data[i].value > 0.9) {
 							color ='#feb24c';
 						}
 						else {

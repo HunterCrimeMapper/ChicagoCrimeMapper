@@ -105,7 +105,7 @@ coordinates = read_coordinates("../coordinate_mapping/third_projection")
 margin_of_insignificance = 0.00001
 zone_size = 0.005
 all_polygons = []
-id = 0
+id = -1
 i = 0
 
 while i < len(coordinates):

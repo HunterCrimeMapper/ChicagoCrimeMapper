@@ -85,7 +85,7 @@
 			var file = null;
 			$.ajax({
 			    type: 'GET',
-			    url: '../static/choro_score3.json',
+			    url: '../static/choro_score6.json',
 
 			    async: false,
 			    dataType: 'json',
@@ -104,6 +104,7 @@
 				center:locat
 			});
 
+            map.setOptions({minZoom: 10})
 			zoneslayer = new google.maps.Data();
 			zoneslayer.loadGeoJson('https://raw.githubusercontent.com/HunterCrimeMapper/ChicagoCrimeMapper/master/geoJSONs/google_map_geoJSON.json');
 

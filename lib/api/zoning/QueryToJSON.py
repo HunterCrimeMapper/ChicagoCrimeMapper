@@ -17,7 +17,7 @@ class QueryToJSON(object):
         self.json ={'list': []}
         self.max_value = 0.0
         self.number_of_zones = number_of_zones
-
+        self.dataFrame = None
 
     def export_to_JSON(self, outfile):
         with open(outfile, 'w') as of:
@@ -31,6 +31,8 @@ class QueryToJSON(object):
     def load_data_frame(self, infile):
         data = pd.DataFrame.from_csv(infile)
         self.max_value = float(data.max())
+        self.dataFrame = data
+
 
     def load_csv_into_json(self, infile, outfile):
         contents = []
@@ -39,7 +41,7 @@ class QueryToJSON(object):
             for row in reader:
                 contents.append(row)
 
-        with open(outfile, 'w') as out:
+        with open('temp_json', 'w') as out:
             out.write("[\n")
             i = 1
             for row in contents:
@@ -67,10 +69,29 @@ class QueryToJSON(object):
                     out.write('{{"ID": {}, "value": 0.0}},'.format(i))
                     i += 1
             out.write("]")
-        with open(outfile, 'r') as IF:
-            data = json.load(IF)
 
-        with open('/Users/galil/src/crime_mapper/static/google_choro.json',
+        self.save_to_JSON('temp_json', outfile)
+
+
+    def make_percentile_map(self):
+
+        boundaries = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.95, 0.99]
+        percentiles = []
+        for boundary in boundaries:
+            percentiles.append(self.dataFrame.quantile(boundary))
+
+        data = {}
+        for num in percentiles:
+            data[num.name] = float(num)
+
+        with open('/Users/galil/src/crime_mapper/static/percentiles.json',
                    'w') as OF:
             json.dump(data, OF)
 
+
+    def save_to_JSON(self, infile, outfile):
+        with open(infile, 'r') as IF:
+            data = json.load(IF)
+
+        with open(outfile, 'w') as OF:
+            json.dump(data, OF)

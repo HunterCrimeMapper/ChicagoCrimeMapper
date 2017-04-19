@@ -9,12 +9,12 @@ GoogleMaps(app)
 
 @app.route('/')
 def mapview():
-    fullmap = Map(
-        identifier="fullmap",
-        lat = 41.8781,
-        lng = -87.6298,
-        markers =[(41.8781, -87.6298), (41.8783, -87.6398)]
-    )
+    #fullmap = Map(
+    #    identifier="fullmap",
+    #    lat = 41.8781,
+    #    lng = -87.6298,
+    #    markers =[(41.8781, -87.6298), (41.8783, -87.6398)]
+    #)
 
     return render_template('galil2_bootstrap.html')
     #return render_template('OSM_bootstrap.html', fullmap=fullmap)

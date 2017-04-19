@@ -85,7 +85,7 @@
 			var file = null;
 			$.ajax({
 			    type: 'GET',
-			    url: '../static/BEER.json',
+			    url: '../static/google_choro.json',
 
 			    async: false,
 			    dataType: 'json',
@@ -128,7 +128,7 @@
 
 	        var score = data[zoneid - 1].value;
 
-		percent= (score*100)/6;
+		percent= (score*100)/7;
 
 	        document.getElementById('data-id').textContent =
       		e.feature.getId('id');
@@ -163,9 +163,12 @@
 						else if(data[i].value > 1) {
 							color ='#feb24c';
 						}
-						else {
+						else if(data[i].value > 0){
 						    color ='#fed976';
 						}
+                        else{
+                            color ='#FAFAD2';
+                        }
 					}
 				}
 

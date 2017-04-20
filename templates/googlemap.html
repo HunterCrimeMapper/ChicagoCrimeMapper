@@ -13,7 +13,7 @@
           position: absolute;
           text-align: center;
           font-family: "Roboto", "Arial", sans-serif;
-          font-size: 13px;
+          font-size: 10px;
           z-index: 5;
           box-shadow: 0 4px 6px -4px #333;
           padding: 5px 10px;
@@ -53,40 +53,63 @@
           font-size: 1.0em;
           line-height: 1.0em;
         }
+    #HighestPercentile {}
     #legend { display: flex; display: -webkit-box; padding-top: 7px }
     #data-score { font-size: 2.0em; font-weight: bold }
     #data-id { font-size: 2.0em; font-weight: normal; padding-right: 10px; }
     #data-id:after { content: ':' }
     #data-caret { margin-left: -5px; display: none; font-size: 14px; width: 14px}
+    .NumberCrimes { font-size: 15px;}
 	</style>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
 
 </head>
 <body>
 	<div id="controls" class="nicebox">
       <div id="legend">
-        <div id="census-min">0</div>
+        <div id="census-min">Low Crime</div>
         <div class="color-key"><span id="data-caret">&#x25c6;</span></div>
-        <div id="census-max">6</div>
+        <div id="census-max">High Crime</div>
       </div>
     </div>
     <div id="data-box" class="nicebox">
       <label id="data-id" for="data-score"></label>
+      <label class="NumberCrimes">Number of Crimes in Zone:</label>
       <span id="data-score"></span>
     </div>
 	<div id="map"></div>
 	<script>
-
 		var map;
 		var zoneslayer;
 
+        var useful_data = '{{ data|safe }}';
+        console.log("THESE ARE THE PERCENTILES, ", useful_data)
+        var crime_url = (function getCrime(){
+            var file = null;
+            $.ajax({
+                type: 'GET',
+                url: '../static/crime_type2.json',
+                async: false,
+                dataType: 'json',
+                success: function(data) {
+                    file = data;
+                }
+            });
+            return file;
+        })();
+
+
 		var data =(function jsontovar(){
 			var file = null;
+            console.log(crime_url['url']),
 			$.ajax({
 			    type: 'GET',
-			    url: '../static/crime_num_choro.json',
-
+			    //url: '../static/assault.json',
+                url: crime_url['url'],
 			    async: false,
 			    dataType: 'json',
 			    success: function(data) {

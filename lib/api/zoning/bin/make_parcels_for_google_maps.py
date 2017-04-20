@@ -1,5 +1,11 @@
 #!/usr/bin/env
 
+# Creates a grid covering Chicago based on the latitude longitude data
+# in ../coordinate_mapping/third_projection.
+# Each rectangle is of equal area, but the dimensions are altered
+# where a square is not possible.
+
+
 #---- Imports -----------------------------------------------------------------
 import json
 import pprint
@@ -63,8 +69,6 @@ def get_local_zone_size(start_lat,
     number_of_zones = int(lat_delta/(zone_size))
     difference = lat_delta%zone_size
     area = (zone_size * zone_size)
-    print("difference : ", difference)
-    print('number_of_zones : ', number_of_zones)
     if (number_of_zones != 0):
         delta = float(difference/number_of_zones)
         new_zone_height = zone_size + delta
@@ -142,8 +146,6 @@ while i < len(coordinates):
     for square in polygons:
         all_polygons.append(square)
     i += 1
-    #the_final_file = make_geoJSON(polygons)
-#pprint.pprint(all_polygons)
 the_final_file = make_geoJSON(all_polygons)
 pprint.pprint(the_final_file)
 with open('../geoJSONs/google_map_geoJSON.json', 'w') as outfile:

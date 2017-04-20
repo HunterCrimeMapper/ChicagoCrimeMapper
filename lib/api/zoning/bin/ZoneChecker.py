@@ -102,9 +102,3 @@ class ZoneChecker(object):
         with open(outfile, 'w') as f:
             json.dumps(self.dictionary_of_sections, f,
                        sort_keys=True, indent=4, separators=(',', ': '))
-
-
-
-###your destionation here
-#with open ("/Users/galil/Documents/Hunter/Spring_2017/Capstone/CrimeMapper/mapper_src/src/ChicagoCrimeMapper/sectioncheck.json", "w") as f:
-#    json.dump(data, f, sort_keys = True, indent = 4, ensure_ascii = False)

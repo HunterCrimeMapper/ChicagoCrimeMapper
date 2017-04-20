@@ -13,11 +13,13 @@ import pprint
 class QueryToJSON(object):
 
 
-    def __init__(self, number_of_zones):
+    def __init__(self, SQL_query):
+        self.dataFrame = None
         self.json ={'list': []}
         self.max_value = 0.0
-        self.number_of_zones = number_of_zones
-        self.dataFrame = None
+        self.number_of_zones = 2700
+        self.SQL_query = SQL_query
+
 
     def export_to_JSON(self, outfile):
         with open(outfile, 'w') as of:
@@ -47,8 +49,7 @@ class QueryToJSON(object):
             for row in contents:
 #               import pdb; pdb.set_trace()
                 id = int(row[0])
-                value = float(row[1])#((float(row[1]) - 0)
-                        #/ (self.max_value - 0)) * 100
+                value = float(row[1])
                 if (id  == i):
                     out.write('{{"ID": {}, "value": {}}},'.format(i, value))
                     i += 1

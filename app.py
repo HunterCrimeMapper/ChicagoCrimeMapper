@@ -12,7 +12,7 @@ GoogleMaps(app)
 
 @app.route('/')
 def mapview():
-    return render_template('galil2_bootstrap.html')
+    return render_template('mapframe.html')
 
 
 @app.route('/get_map')
@@ -23,21 +23,13 @@ def get_map():
 @app.route('/crime_data', methods= ['GET', 'POST'])
 def get_crime_data():
     #import pdb; pdb.set_trace()
-    print("HELLLOOOO!!!")
-    info = None
     if request.method == 'POST':
-        print("Made it into POST")
         info = request.json
         print(info)
         return jsonify(info)
-        #response = app.response_class(
-        #    response=json.dumps(info),
-        #    status=200,
-        #    mimetype='application/json')
     else:
-        print("Not ran not in post")
-        return ("Hi there")
-    #query = Q2J.QueryToJSON(2704)
+        return render_template('mapframe.html')
+    #query = Q2J.QueryToJSON()
     #query.load_data_frame('/Users/galil/src/crime_mapper/lib/api/zoning/2017assault.csv')
     #data = query.make_percentile_map()
 

@@ -114,10 +114,31 @@ $(document).ready(function runit(){
                         console.log("end is",  end);
                         window.start = start;
                         window.end = end;
+                        if (window.crime == null){
+                            window.crime = 'Arson';
+                        }
                         var crime_info = {'crime': window.crime, 'start': window.start._d, 'end': window.end._d};
+                        $(document).ready(function(){
+                        $.ajax({
+                            type: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify(crime_info),
+                            dataType: 'json',
+                            url: '/crime_data',
+                            success: function(e){
+                                console.log(e);
+                                window.location = '/crime_data';
+                            },
+                            error: function(error) {
+                            console.log(error);
+                        }
+                        });
+                        });
                         console.log(crime_info);
-                })
-			});
+                });
+            });
+
+
 			</script>
         </div>
       </form>

@@ -84,6 +84,7 @@
 	<div id="map"></div>
 	<script>
 		var map;
+		var locat = {lat:41.889179863, lng:-87.633110109};
 		var zoneslayer;
 
         var useful_data = '{{ data|safe }}';
@@ -133,16 +134,48 @@
             return file;
         })();
 
+	function CenterControl(controldiv, map){
+		var controlUI = document.createElement('div');
+		controlUI.style.backgroundColor = '#fff';
+		controlUI.style.border = '2px solid #fff';
+		controlUI.style.borderRadius='3px';
+		controlUI.style.boxShadow = '0 4px 6px -4px #333';
+		controlUI.style.cursor = 'pointer';
+		controlUI.style.marginBottom='22px';
+		controlUI.style.textAlign ='center';
+		controlUI.title = 'Click to recenter the map';
+		controldiv.appendChild(controlUI);
+
+
+		var controlText = document.createElement('div');
+	        controlText.style.color = 'rgb(25,25,25)';
+	        controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+	        controlText.style.fontSize = '16px';
+	        controlText.style.lineHeight = '38px';
+	        controlText.style.paddingLeft = '5px';
+	        controlText.style.paddingRight = '5px';
+	        controlText.innerHTML = 'Center Map';
+	        controlUI.appendChild(controlText);
+
+		controlUI.addEventListener('click', function() {
+			map.setCenter(locat);
+        	});
+	}
 		function initMap(){
-			var locat = {lat:41.889179863, lng:-87.633110109};
 			map = new google.maps.Map(document.getElementById('map'),{
 				zoom:10,
 				minZoom:10,
-				maxZoom:15,
 				center:locat
 			});
 
-            map.setOptions({minZoom: 10})
+           	 map.setOptions({minZoom: 10})
+
+			var centerControlDiv = document.createElement('div');
+        		var centerControl = new CenterControl(centerControlDiv, map);
+
+        		centerControlDiv.index = 1;
+        		map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(centerControlDiv);
+
 			zoneslayer = new google.maps.Data();
 			zoneslayer.loadGeoJson('https://raw.githubusercontent.com/HunterCrimeMapper/ChicagoCrimeMapper/master/geoJSONs/google_map_geoJSON.json');
 

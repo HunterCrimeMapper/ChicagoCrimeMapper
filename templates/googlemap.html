@@ -103,14 +103,35 @@
             return file;
         })();
 
+        var other_data = (function querytovar(){
+            var data = null;
+            $.ajax({
+                type: 'GET',
+                contentType: 'application/json',
+                url: '/get_data',
+                success: function(e){
+                    console.log("This is in the html JS: ", e);
+                    other_data = e;
+                    return other_data;
+                },
+                error: function(error){
+                    console.log("Is it an error? ", error);
+                }
+            });
+            console.log("Is this the data?  ", other_data);
+            return other_data;
+        })();
+
+        console.log("The other data: ", other_data);
+
 
 		var data =(function jsontovar(){
 			var file = null;
             console.log(crime_url['url']),
 			$.ajax({
 			    type: 'GET',
-			    //url: '../static/assault.json',
-                url: crime_url['url'],
+			    url: '../static/assault.json',
+                //url: crime_url['url'],
 			    async: false,
 			    dataType: 'json',
 			    success: function(data) {

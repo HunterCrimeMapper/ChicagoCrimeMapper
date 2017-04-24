@@ -1,0 +1,14 @@
+Author: Galil Gertner
+
+Crime mapper:
+
+- JavaScript/HTML/Bootstrap
+- Python 3.5
+- mySQL
+- Flask/uWSGI/gunicorn
+
+
+- JavaScript/HTML displays google map and crime/date range selection
+- Python queries mySQL database base on client parameters
+- mySQL returns list of zone : number of crimes in zone
+- Flask passes list to googlemap.html to populate the choropleth

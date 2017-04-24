@@ -37,11 +37,11 @@ class QueryToJSON(object):
 
 
     def load_csv_into_json(self, infile, outfile):
-        contents = []
-        with open(infile, 'r') as file:
-            reader = csv.reader(file)
-            for row in reader:
-                contents.append(row)
+        #contents = []
+        #with open(infile, 'r') as file:
+        #    reader = csv.reader(file)
+        #    for row in reader:
+        #        contents.append(row)
 
         with open('temp_json', 'w') as out:
             out.write("[\n")

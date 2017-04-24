@@ -30,7 +30,6 @@ $(document).ready(function runit(){
      $('.dropdown-menu li a').click(function run_it(){
        var selText = $(this).text();
        console.log(selText);
-       console.log("Hey there");
        window.crime = selText;
        $(this).parents('.dropdown').find('.dropdown-toggle').html(selText);
      });

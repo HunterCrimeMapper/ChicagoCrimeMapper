@@ -1,0 +1,143 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+	<title>Chicago Crime Map</title>
+	<meta charset="utf-8">
+ 	 <meta name="viewport" content="width=device-width, initial-scale=1">
+ 	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style>
+	body { background-color: black;  }
+	.container {
+    	padding: 80px 120px;
+
+	}
+
+ 	.person {
+    	border: 10px solid transparent;
+    	margin-bottom: 25px;
+    	opacity: 0.7;
+  	}
+	.person:hover {
+	    border-color: #f1f1f1;
+	}
+
+	
+	h1 {
+		padding: 14px 16px;
+		background-color: black;
+		height: 100px;
+		color:white;
+		font-size: 48;
+		text-align: center;
+	}
+
+	.navbar {
+    	margin-bottom: 0;
+    	background-color: #2d2d30;
+    	border: 0;
+    	font-size: 11px;
+    	letter-spacing: 4px;
+    	opacity:0.9;
+	}
+	.navbar li a, .navbar .navbar-brand { 
+    	color: #d5d5d5 !important;
+	}
+	.navbar-nav li a:hover {
+    	color: #fff !important;
+	}
+	.navbar-nav li.active a {
+    color: #fff !important;
+    background-color:#29292c !important;
+	}
+	.navbar-default .navbar-toggle {
+    border-color: transparent;
+	}
+
+	</style>
+</head>
+<body id="home" data-spy="scroll" data-target=".navbar" data-offset="50">
+<br>
+<br><br>
+<h1><b><i>Chicago Crime Mapper </i></b></h1>
+
+<nav class="navbar navbar-default navbar-fixed-top" >
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+		<ul class="nav navbar-nav navbar-left">
+			<li><a href="http://69.120.125.192:4010">HOME</a></li>
+			<li><a href="#Members">MEMBERS</a></li>
+		</ul>
+	</div>
+</div>
+</nav>
+
+	<div>
+		<img src="https://chicagodowntowntheloop.place.hyatt.com/content/dam/PropertyWebsites/place/chizp/Media/All/Hyatt-Place-Chicago-Downtown-The-Loop-P014-Skyline-North-Lakeshore.masthead-feature-panel-medium.masthead-feature-panel-medium.jpg" width="100%">
+	</div>
+	<div id="Members" class="container text-center">
+		<h2 style="text-align: center; font-size: 36; color: white;">CHICAGO CRIME MAPPER GROUP MEMBERS</h2>
+		
+		<br>
+
+		<div class="row">
+			<div class="col-sm-4">
+				<p class="text-center" style="color:white; font-size: 24;"><strong>Galil Gertner</strong></p><br>
+				<a href="#galil" data-toggle="collapse">
+					<img src="../static/Headshot.jpg" class="img-circle person" alt="Random Name" width="225" height="225" >
+				</a>
+				<div id="galil" class="collapse" style="color:white;">
+					<p>Hi I’m Galil Gertner. I’m getting my second degree in computer science.  My first degree is in philosophy.  After studying diligently for the LSAT’s and being enraptured by the “logic games” part of the LSAT test, I realized that I wanted to pursue a career where I could solve logic puzzles on a daily basis rather than argue over statutory law.  Coding provides exactly this, while also having the power to change the way people interact with the world. I can’t think of a better way to invest my time.</p>	
+
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<p class="text-center" style="color:white; font-size: 24;"><strong>Adnan Canovic</strong></p>
+				<a href="#adnan" data-toggle="collapse">
+					<img src="../static/AdnanC640.jpg" class="img-circle person" alt="Random Name" width="225" height="225">
+				</a>
+				<div id="adnan" class="collapse" style="color:white;">
+					<p>Hey, I’m Adnan Canovic. I’m a CS at Hunter College. I’m primarily experienced in C++ and C#, though I’ve dabbled a little outside of that -- namely working with relational databases in SQL. Assuming this course goes well, capstone will be closing off my last semester here. 
+					</p>	
+
+				</div>
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-sm-4">
+				<p class="text-center" style="color:white; font-size: 24;"><strong>Ibrahim Akay</strong></p>
+				<a href="#ibrahim" data-toggle="collapse">
+				<img src="../static/ibrahim.jpg" class="img-circle person" alt="Random Name" width="225" height="225">
+				</a>
+				<div id="ibrahim" class="collapse" style="color:white;">
+					<p>Hey, my name is Ibrahim Akay. I am a 22-year-old Computer Science major in Hunter College, and I plan to graduate by the end of this spring 2017 semester. Throughout my years studying computer science in Hunter, I have mainly written code in C++, and I have also used C and JavaScript.  
+					</p>	
+
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<p class="text-center" style="color:white; font-size: 24;"><strong>Peizhen Chen</strong></p>
+				<a href="#peizhen" data-toggle="collapse">
+				<img src="../static/peizhen640.jpg" class="img-circle person" alt="Random Name" width="225" height="225">
+				</a>
+				<div id="peizhen" class="collapse" style="color:white;">
+					<p>Hi, my name is Peizhen Chen.  I am a computer science major student in Hunter College.  Since C++ is the first coding language I learned, so most of my codes are written in C++. Besides C++, I have also learned a little JavaScript, just a little. Capstone is my last course that I am taking this semester, I am looking forward to learn more stuffs.  And hopefully, I can graduate by the end of Spring 2017 semester. 
+
+					</p>	
+
+				</div>
+			</div>
+			</div>
+		
+	</div>
+<!---still need a project goal page and source code -->
+</body>
+</html>

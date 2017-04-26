@@ -201,8 +201,9 @@
         		map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(centerControlDiv);
 
 			zoneslayer = new google.maps.Data();
-			zoneslayer.loadGeoJson('https://raw.githubusercontent.com/HunterCrimeMapper/ChicagoCrimeMapper/master/geoJSONs/google_map_geoJSON.json');
+			//zoneslayer.loadGeoJson('https://raw.githubusercontent.com/HunterCrimeMapper/ChicagoCrimeMapper/master/geoJSONs/google_map_geoJSON.json');
 
+			zoneslayer.loadGeoJson('../static/google_map_geoJSON.json');
 
 	        zoneslayer.setStyle(styleFeature);
 	        zoneslayer.addListener('mouseover',mouseInToRegion);
@@ -218,7 +219,7 @@
 	        var percent;
 
 	        var zoneid = e.feature.getId('id');
-	        var score = data[zoneid -1].value;
+	        var score = data[zoneid].value;
 
 		if (score > percentile_data[0.99]){
                  percent = 99;
@@ -264,37 +265,33 @@
 		function styleFeature(feature){
 	        	var color = 'gray';
 	        	var zoneid = feature.getId('id');
-	        	for(var i =0; i< data.length; i++){
-					if(data[i].ID == zoneid){
-                        if (data[i].value > percentile_data[0.99]){
-                            color = '#F901D8';
-                        }
-                        else if (data[i].value > percentile_data[0.95]){
-                            color = '#860129';
-                        }
-						else if (data[i].value >percentile_data[0.9]){
-						    color ='#FD0F0F';
-						}
-						else if (data[i].value > percentile_data[0.8]){
-						    color ='#FC360E';
-						}
-						else if (data[i].value > percentile_data[0.6]) {
-							color ='#fc4e2a';
-						}
-						else if (data[i].value > percentile_data[0.4]) {
-						    color ='#fd8d3c';
-						}
-						else if(data[i].value > percentile_data[0.2]) {
-							color ='#feb24c';
-						}
-						else if(data[i].value > 0){
-						    color ='#fed976';
-						}
-                        else{
-                            color ='#FAFAD2';
-                        }
-					}
+                if (data[zoneid].value > percentile_data[0.99]){
+                    color = '#F901D8';
+                }
+                else if (data[zoneid].value > percentile_data[0.95]){
+                    color = '#860129';
+                }
+				else if (data[zoneid].value >percentile_data[0.9]){
+				    color ='#FD0F0F';
 				}
+				else if (data[zoneid].value > percentile_data[0.8]){
+				    color ='#FC360E';
+				}
+				else if (data[zoneid].value > percentile_data[0.6]) {
+					color ='#fc4e2a';
+				}
+				else if (data[zoneid].value > percentile_data[0.4]) {
+				    color ='#fd8d3c';
+				}
+				else if(data[zoneid].value > percentile_data[0.2]) {
+					color ='#feb24c';
+				}
+				else if(data[zoneid].value > 0){
+				    color ='#fed976';
+				}
+                else{
+                    color ='#FAFAD2';
+                }
 
 	        	return ({
             		fillColor: color,

@@ -218,9 +218,35 @@
 	        var percent;
 
 	        var zoneid = e.feature.getId('id');
-	        var score = data[zoneid - 1].value;
+	        var score = data[zoneid].value;
 
-		percent= (score*100)/7;
+		if (score > percentile_data[0.99]){
+                 percent = 99;
+		    }
+		    else if (score > percentile_data[0.95]){
+			  percent = 95;
+		    }
+		    else if (score >percentile_data[0.9]){
+			  percent = 90;
+		    }
+		    else if (score> percentile_data[0.8]){
+			  percent = 80;
+		    }
+		    else if (score> percentile_data[0.6]) {
+			  percent = 60;
+		    }
+		    else if (score > percentile_data[0.4]) {
+			  percent = 40;
+		    }
+		    else if(score > percentile_data[0.2]) {
+			  percent = 20;
+		    }
+		    else if(score > 0){
+			  percent=1;
+		    }
+		    else{
+			percent=0;
+		    }
 
 	        document.getElementById('data-id').textContent =
       		e.feature.getId('id');

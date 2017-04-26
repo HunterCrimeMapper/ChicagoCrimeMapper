@@ -14,7 +14,7 @@ GoogleMaps(app)
 
 @app.route('/')
 def mapview():
-    return render_template('mapframe.html')
+    return render_template('start_map.html')
 
 
 @app.route('/get_map')
@@ -42,6 +42,10 @@ def get_crime_data():
 @app.route('/get_data', methods = ['GET'])
 def get_data():
     return jsonify(info)
+
+@app.route('/start_map', methods=['GET'])
+def start_map():
+    return render_template('chicagomap.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -125,7 +125,8 @@ $(document).ready(function runit(){
                             url: '/crime_data',
                             success: function(e){
                                 console.log(e);
-                                window.location = '/crime_data';
+                                window.location = '/mapview';
+                                //document.getElementById('theMap').contentWindow.location.reload();
                             },
                             error: function(error) {
                             console.log(error);

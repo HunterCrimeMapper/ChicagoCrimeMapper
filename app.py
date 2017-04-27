@@ -16,6 +16,10 @@ app.config['GOOGLEMAPS_KEY'] = "AIzaSyAgZDoXzJBhfIq--DbQTfCLutn9r_OyRjo"
 GoogleMaps(app)
 
 @app.route('/')
+def startview():
+    return render_template('start_map.html')
+
+@app.route('/mapview')
 def mapview():
     return render_template('mapframe.html')
 

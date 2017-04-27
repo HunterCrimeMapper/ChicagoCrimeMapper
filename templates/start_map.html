@@ -55,7 +55,7 @@ $(document).ready(function runit(){
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{ url_for('mapview') }}" style="color:#d9d9d9">Chicago Crime Mapper</a>
+      <a class="navbar-brand" href="#" style="color:#d9d9d9">Chicago Crime Mapper</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -115,7 +115,6 @@ $(document).ready(function runit(){
                         if (window.crime == null){
                             window.crime = 'Arson';
                         }
-                        var _start = window.start._d
                         var crime_info = {'crime': window.crime, 'start': window.start._d, 'end': window.end._d};
                         $(document).ready(function(){
                         $.ajax({
@@ -126,8 +125,7 @@ $(document).ready(function runit(){
                             url: '/crime_data',
                             success: function(e){
                                 console.log(e);
-                                document.getElementById('theMap').contentWindow.location.reload();
-                                //:window.location = '/crime_data';
+                                window.location = '/crime_data';
                             },
                             error: function(error) {
                             console.log(error);
@@ -140,13 +138,12 @@ $(document).ready(function runit(){
 
 
 			</script>
-			<input type="submit" value="Go!" style="width:50px; padding:4px">
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
       	<li><a href="{{ url_for('get_crime_data') }}" style ="color:#d9d9d9">Re-Center Map</a></li>
 	<li><a href="https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-present/ijzp-q8t2/data" target="_blank" style ="color:#d9d9d9">Data Source</a></li>
-	<li><a href="{{ url_for('group_info')  }}" target="_blank" style ="color:#d9d9d9">About the Team</a></li>
+	<li><a href="{{ url_for('group_info') }}" target="_blank" style ="color:#d9d9d9">About the Team</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -154,7 +151,7 @@ $(document).ready(function runit(){
 <body style="background-color:#333333;">
   	<div class="map">
 		<center>
-			<p><iframe id="theMap" style="border: 1px solid #ccc" width="70%" height="700" src="{{ url_for('get_map') }}"></iframe></p>
+			<p><iframe style="border: 1px solid #ccc" width="70%" height="700" src="{{ url_for('start_map') }}"></iframe></p>
 		</center>
 	</div>
 </body>

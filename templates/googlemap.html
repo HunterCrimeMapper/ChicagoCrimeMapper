@@ -69,6 +69,8 @@
 
 </head>
 <body>
+<meta id="my-data" data-name="{{info}}">
+
 	<div id="controls" class="nicebox">
       <div id="legend">
         <div id="census-min">Low Crime</div>
@@ -87,8 +89,10 @@
 		var locat = {lat:41.889179863, lng:-87.633110109};
 		var zoneslayer;
 
-        var useful_data = '{{ data|safe }}';
-        console.log("THESE ARE THE PERCENTILES, ", useful_data)
+        var goodVar = $('#my-data').data();
+        //console.log("The stuff: ", goodVar.name);
+        //var data = JSON.stringify(goodVar.name);
+        //console.log("This is the json ", data)
         var crime_url = (function getCrime(){
             var file = null;
             $.ajax({
@@ -103,34 +107,13 @@
             return file;
         })();
 
-        var other_data = (function querytovar(){
-            var data = null;
-            $.ajax({
-                type: 'GET',
-                contentType: 'application/json',
-                url: '/get_data',
-                success: function(e){
-                    console.log("This is in the html JS: ", e);
-                    other_data = e;
-                    return other_data;
-                },
-                error: function(error){
-                    console.log("Is it an error? ", error);
-                }
-            });
-            console.log("Is this the data?  ", other_data);
-            return other_data;
-        })();
-
-        console.log("The other data: ", other_data);
-
 
 		var data =(function jsontovar(){
 			var file = null;
             console.log(crime_url['url']),
 			$.ajax({
 			    type: 'GET',
-			    url: '../static/assault.json',
+			    url: '../static/data.json',
                 //url: crime_url['url'],
 			    async: false,
 			    dataType: 'json',
@@ -183,29 +166,33 @@
         	});
 	}
 		function initMap(){
+            var s_time = Date.now();
 			map = new google.maps.Map(document.getElementById('map'),{
 				zoom:10,
 				minZoom:10,
 				center:locat
 			});
 
+            console.log("After map: ", Date.now() - s_time);
            	 map.setOptions({minZoom: 10})
 
 			var centerControlDiv = document.createElement('div');
-        		var centerControl = new CenterControl(centerControlDiv, map);
+        	var centerControl = new CenterControl(centerControlDiv, map);
 
-        		centerControlDiv.index = 1;
-        		map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(centerControlDiv);
+        	centerControlDiv.index = 1;
+        	map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(centerControlDiv);
+
+            console.log("After controls: ", Date.now() - s_time);
 
 			zoneslayer = new google.maps.Data();
-			zoneslayer.loadGeoJson('https://raw.githubusercontent.com/HunterCrimeMapper/ChicagoCrimeMapper/master/geoJSONs/google_map_geoJSON.json');
-
-
+			//zoneslayer.loadGeoJson('https://raw.githubusercontent.com/HunterCrimeMapper/ChicagoCrimeMapper/master/geoJSONs/google_map_geoJSON.json');
+			zoneslayer.loadGeoJson('../static/google_map_geoJSON.json');
 	        zoneslayer.setStyle(styleFeature);
 	        zoneslayer.addListener('mouseover',mouseInToRegion);
 	        zoneslayer.addListener('mouseout',mouseOutOfRegion);
 
 	        zoneslayer.setMap(map);
+            console.log("After setmap: ", Date.now() - s_time);
 		}
 		function mouseInToRegion(e){
 
@@ -215,7 +202,7 @@
 	        var percent;
 
 	        var zoneid = e.feature.getId('id');
-	        var score = data[zoneid - 1].value;
+	        var score = data[zoneid].value;
 
 		percent= (score*100)/7;
 
@@ -232,47 +219,57 @@
 			zoneslayer.revertStyle();
 
 		}
+        var start_time =  Date.now();
+        var end_time;
+        var diff_time;
+        var count = 0;
 		function styleFeature(feature){
 	        	var color = 'gray';
 	        	var zoneid = feature.getId('id');
-	        	for(var i =0; i< data.length; i++){
-					if(data[i].ID == zoneid){
-                        if (data[i].value > percentile_data[0.99]){
-                            color = '#F901D8';
-                        }
-                        else if (data[i].value > percentile_data[0.95]){
-                            color = '#860129';
-                        }
-						else if (data[i].value >percentile_data[0.9]){
-						    color ='#FD0F0F';
-						}
-						else if (data[i].value > percentile_data[0.8]){
-						    color ='#FC360E';
-						}
-						else if (data[i].value > percentile_data[0.6]) {
-							color ='#fc4e2a';
-						}
-						else if (data[i].value > percentile_data[0.4]) {
-						    color ='#fd8d3c';
-						}
-						else if(data[i].value > percentile_data[0.2]) {
-							color ='#feb24c';
-						}
-						else if(data[i].value > 0){
-						    color ='#fed976';
-						}
-                        else{
-                            color ='#FAFAD2';
-                        }
-					}
+                //console.log("count: ", count);
+                count += 1;
+                //console.log("zoneid: ", zoneid);
+                if (count == 2650){
+                    end_time = Date.now();
+                    console.log("Start time: ", start_time);
+                    console.log("elapsed time: ", end_time - start_time);
+                }
+
+                if (data[zoneid].value > percentile_data[0.99]){
+                    color = '#F901D8';
+                }
+                else if (data[zoneid].value > percentile_data[0.95]){
+                    color = '#860129';
+                }
+				else if (data[zoneid].value >percentile_data[0.9]){
+				    color ='#FD0F0F';
 				}
+				else if (data[zoneid].value > percentile_data[0.8]){
+				    color ='#FC360E';
+				}
+				else if (data[zoneid].value > percentile_data[0.6]) {
+					color ='#fc4e2a';
+				}
+				else if (data[zoneid].value > percentile_data[0.4]) {
+				    color ='#fd8d3c';
+				}
+				else if(data[zoneid].value > percentile_data[0.2]) {
+					color ='#feb24c';
+				}
+				else if(data[zoneid].value > 0){
+				    color ='#fed976';
+				}
+                  else{
+                      color ='#FAFAD2';
+                }
 
 	        	return ({
             		fillColor: color,
-			fillOpacity: 0.75,
+			        fillOpacity: 0.75,
             		strokeColor: 'white',
             		strokeWeight: 0.4
           		});
+
 	        }
 
 

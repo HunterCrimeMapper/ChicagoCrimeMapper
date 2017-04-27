@@ -3,7 +3,6 @@ from flask_googlemaps import GoogleMaps, Map
 from lib.api.zoning import Q2J
 from lib.api.zoning.bin.QueryCrimeTable import QueryCrimeTable
 
-
 import json
 
 JSON_info = None
@@ -17,7 +16,7 @@ GoogleMaps(app)
 
 @app.route('/')
 def mapview():
-    return render_template('mapframe.html')
+    return render_template('start_map.html')
 
 
 @app.route('/get_map')
@@ -27,6 +26,8 @@ def get_map():
 
 @app.route('/crime_data', methods= ['GET', 'POST'])
 def get_crime_data():
+    #import pdb; pdb.set_trace()
+    #info = None
     global info
     if request.method == 'POST':
         global JSON_info
@@ -34,26 +35,29 @@ def get_crime_data():
         crime = info['crime'].strip()
         start_date = str(info['start'][:10].replace('-', ''))
         end_date = str(info['end'][:10].replace('-', ''))
-
-        print("Crime: {}, start_date: {}, end_date: {}"
-                            .format(crime, start_date, end_date))
+        print("This is in flask: ", info)
         query = QueryCrimeTable()
         JSON_info = query.get_crime_json(start_date, end_date, crime)
-        return jsonify(info)
+        return render_template('mapframe.html', info=info)
+        #return jsonify(info)
     else:
-        print("This is else in flask: ", info)
+        print("This is else in flask: ", info);
         return render_template('googlemap.html');
+        #return jsonify(info);
+    #query = Q2J.QueryToJSON()
+    #query.load_data_frame('/Users/galil/src/crime_mapper/lib/api/zoning/2017assault.csv')
+    #data = query.make_percentile_map()
 
 @app.route('/get_data', methods = ['GET'])
 def get_data():
     return jsonify(info)
-
 @app.route('/group_info', methods = ['GET'])
+
 def group_info():
     return render_template('bio.html')
 
 
-@app.route('/start_map', methods= ['GET'])
+@app.route('/start_map', methods=['GET'])
 def start_map():
     return render_template('chicagomap.html')
 

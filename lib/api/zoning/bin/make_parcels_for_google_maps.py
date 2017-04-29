@@ -105,7 +105,7 @@ def reverse_lat_long(lat_long):
 
 #---- Main --------------------------------------------------------------------
 
-coordinates = read_coordinates("../coordinate_mapping/third_projection")
+coordinates = read_coordinates("../coordinate_mapping/fourth_projection")
 margin_of_insignificance = 0.00001
 zone_size = 0.005
 all_polygons = []
@@ -148,7 +148,7 @@ while i < len(coordinates):
     i += 1
 the_final_file = make_geoJSON(all_polygons)
 pprint.pprint(the_final_file)
-with open('../geoJSONs/google_map_geoJSON.json', 'w') as outfile:
+with open('/Users/galil/src/crime_mapper/static/google_map_geoJSON3.json', 'w') as outfile:
         json.dump(the_final_file, outfile)
 
 

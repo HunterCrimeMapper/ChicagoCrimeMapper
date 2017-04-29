@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Thu Apr 27 11:14:28 EDT 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-015b-affa-4bc5-00000f3e0f40 
+on database directory /Users/galil/Documents/Hunter/Spring_2017/Capstone/CrimeMapper/mapper_src/src/ChicagoCrimeMapper/metastore_db with class loader org.apache.spark.sql.hive.client.IsolatedClientLoader$$anon$1@1961d4d7 
+Loaded from file:/usr/local/Cellar/apache-spark/2.1.0/libexec/jars/derby-10.12.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_111-b14
+user.dir=/Users/galil/Documents/Hunter/Spring_2017/Capstone/CrimeMapper/mapper_src/src/ChicagoCrimeMapper
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.11.6
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

@@ -27,7 +27,7 @@ class QueryCrimeTable(object):
         iter_count = 1
 
         with connection.cursor() as cursor:
-        	sql = ("SELECT zone, COUNT(id) FROM filtered_2001_present "
+        	sql = ("SELECT zone, COUNT(id) FROM final_table "
         		"WHERE date >= '{}' AND date <= '{}' AND primary_type = '{}' AND NOT zone = 0 "
         		"GROUP by zone".format(date_start, date_end, crime_type))
         	cursor.execute(sql)

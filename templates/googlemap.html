@@ -27,8 +27,14 @@
           width: 360px;
           height: 45px;
         }
+	#controls2 {
+          top: 50px;
+          left: 110px;
+          width: 360px;
+          height: 30px;
+        }
         #data-box {
-      top: 65px;
+      top: 90px;
       left: 110px;
       height: 45px;
       line-height: 45px;
@@ -73,18 +79,41 @@
 </head>
 <body>
 	<div id="controls" class="nicebox">
-      <div id="legend">
+      	<div id="legend">
         <div id="census-min">Low Crime</div>
         <div class="color-key"><span id="data-caret">&#x25c6;</span></div>
         <div id="census-max">High Crime</div>
-      </div>
-    </div>
+      	</div>
+    	</div>
+	<div id="controls2" class="nicebox">
+      	<div id="legend">
+      	<div id="census-min">95th Percentile</div>
+        <canvas id="95th" width="20" height="20" style="border: 1px solid #d3d3d3;"></canvas>
+     
+      	<div id="census-min">99th Percentile</div>
+        <canvas id="99th" width="20" height="20" style="border: 1px solid #d3d3d3;"></canvas>
+      	</div>
+      	</div>
     <div id="data-box" class="nicebox">
       <label id="data-id" for="data-score"></label>
       <label class="NumberCrimes">Number of Crimes in Zone:</label>
       <span id="data-score"></span>
     </div>
 	<div id="map"></div>
+
+	<script>
+
+	    var c = document.getElementById("95th");
+	    var ctx = c.getContext("2d");
+	    ctx.fillStyle = "#860129";
+	    ctx.fillRect(0, 0, 20, 20);
+	    var c2 = document.getElementById("99th");
+	    var ctx2 = c2.getContext("2d");
+	    ctx2.fillStyle = "#F901D8";
+	    ctx2.fillRect(0, 0, 20, 20);
+
+	</script>
+
 	<script>
 		var map;
 		var locat = {lat:41.889179863, lng:-87.633110109};
@@ -249,7 +278,7 @@
 			percent=0;
 		    }
 
-	        document.getElementById('data-id').textContent =
+	        document.getElementById('data-id').textContent ="Zone "+
       		e.feature.getId('id');
       		document.getElementById('data-score').textContent =
       score.toLocaleString();

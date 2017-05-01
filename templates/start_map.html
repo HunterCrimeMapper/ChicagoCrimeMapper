@@ -55,7 +55,7 @@ $(document).ready(function runit(){
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#" style="color:#d9d9d9">Chicago Crime Mapper</a>
+      <a class="navbar-brand" href="#" style="color:#d9d9d9">Home</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -106,7 +106,10 @@ $(document).ready(function runit(){
 		  <script type="text/javascript">
 			$(function() {
 				$('input[name="daterange"]').daterangepicker(
-                {},
+                {
+					    "autoApply": true,
+						"showDropdowns": true
+				},
                 function(start, end, label) {
                         console.log("start is: ", start);
                         console.log("end is",  end);
@@ -135,8 +138,6 @@ $(document).ready(function runit(){
                         console.log(crime_info);
                 });
             });
-
-
 			</script>
         </div>
       </form>

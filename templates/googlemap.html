@@ -202,7 +202,7 @@
 	        var percent;
 
 	        var zoneid = e.feature.getId('id');
-	        var score = data[zoneid].value;
+	        var score = data[zoneid - 1].value;
 
 		percent= (score*100)/7;
 
@@ -235,28 +235,28 @@
                     console.log("elapsed time: ", end_time - start_time);
                 }
 
-                if (data[zoneid].value > percentile_data[0.99]){
+                if (data[zoneid - 1].value > percentile_data[0.99]){
                     color = '#F901D8';
                 }
-                else if (data[zoneid].value > percentile_data[0.95]){
+                else if (data[zoneid - 1].value > percentile_data[0.95]){
                     color = '#860129';
                 }
-				else if (data[zoneid].value >percentile_data[0.9]){
+				else if (data[zoneid - 1].value >percentile_data[0.9]){
 				    color ='#FD0F0F';
 				}
-				else if (data[zoneid].value > percentile_data[0.8]){
+				else if (data[zoneid - 1].value > percentile_data[0.8]){
 				    color ='#FC360E';
 				}
-				else if (data[zoneid].value > percentile_data[0.6]) {
+				else if (data[zoneid - 1].value > percentile_data[0.6]) {
 					color ='#fc4e2a';
 				}
-				else if (data[zoneid].value > percentile_data[0.4]) {
+				else if (data[zoneid - 1].value > percentile_data[0.4]) {
 				    color ='#fd8d3c';
 				}
-				else if(data[zoneid].value > percentile_data[0.2]) {
+				else if(data[zoneid - 1].value > percentile_data[0.2]) {
 					color ='#feb24c';
 				}
-				else if(data[zoneid].value > 0){
+				else if(data[zoneid - 1].value > 0){
 				    color ='#fed976';
 				}
                   else{

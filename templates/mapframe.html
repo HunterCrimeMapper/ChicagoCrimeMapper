@@ -62,7 +62,7 @@ $(document).ready(function runit(){
      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
 		<li class="dropdown">
-          <a href="#" id="theTitle" class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-haspopup="true" aria-expanded="false" style ="color:#d9d9d9">Select Crime Type<span class="caret"></span></a>
+          <a href="#" id="theTitle" class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-haspopup="true" aria-expanded="false" style ="color:#d9d9d9">Crime Types<span class="caret"></span></a>
           <ul class="dropdown-menu"  id="diff_crimes" style="height:auto; max-height:200px; overflow-x:hidden;">
             <li><a href="#" class="small" data-value="Arson" tabIndex="0"> Arson</a></li>
 			<li><a href="#" class="small" data-value="Assault" tabIndex="1"> Assault</a></li>
@@ -102,7 +102,10 @@ $(document).ready(function runit(){
 
       <form class="navbar-form navbar-left">
         <div class="form-group">
-          <input type="text" class="form-control" name="daterange" value="01/01/2001 - 04/19/2017" size="60" style="text-align:center">
+			<label for="start" style="color:#d9d9d9">Start : </label><input class="form-control" id="start" type="date" value="2001-01-01"/>
+			<label for="end" style="color:#d9d9d9; padding-left:10px">End : </label><input class="form-control" id="end" type="date" value="2017-05-01"/>	
+			<input class="form-control" type="submit" value="Submit">			
+          <!-- <input type="text" class="form-control" name="daterange" value="01/01/2001 - 04/19/2017" size="60" style="text-align:center">
 		  <script type="text/javascript">
 			$(function() {
 				$('input[name="daterange"]').daterangepicker(
@@ -138,14 +141,13 @@ $(document).ready(function runit(){
                         console.log(crime_info);
                 });
             });
-			</script>
+			</script> -->
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
-      	<li><a href="{{ url_for('get_crime_data') }}" style ="color:#d9d9d9">Re-Center Map</a></li>
-	<li><a href="#" style ="color:#d9d9d9">Compare 2 Maps</a></li>
-	<li><a href="https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-present/ijzp-q8t2/data" target="_blank" style ="color:#d9d9d9">Data Source</a></li>
-	<li><a href="http://69.120.125.192:4009/" target="_blank" style ="color:#d9d9d9">About the Team</a></li>
+		<li><a href="#" style ="color:#d9d9d9">Compare Maps</a></li>
+		<li><a href="https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-present/ijzp-q8t2/data" target="_blank" style ="color:#d9d9d9">Data Source</a></li>
+		<li><a href="http://69.120.125.192:4009/" target="_blank" style ="color:#d9d9d9">About the Team</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

@@ -106,7 +106,21 @@ $(document).ready(function runit(){
 		  <script type="text/javascript">
 			$(function() {
 				$('input[name="daterange"]').daterangepicker(
-                {},
+                {
+                    "showDropdowns": true,
+                    "timePickerIncrement": 1,
+                    //"autoApply": true,
+                    "startDate": "01/01/2001",
+                    "endDate": "04/01/2017",
+                    "minDate": "01/01/2001",
+                    "maxDate": "04/01/2017",
+                    "opens": "left",
+                    "drops": "down",
+                    "buttonClasses": "btn btn-lg",
+                    "applyClass": "btn-success",
+                    "cancelClass": "btn-default"
+
+                },
                 function(start, end, label) {
                         console.log("start is: ", start);
                         console.log("end is",  end);

@@ -93,24 +93,24 @@
         //console.log("The stuff: ", goodVar.name);
         //var data = JSON.stringify(goodVar.name);
         //console.log("This is the json ", data)
-        var crime_url = (function getCrime(){
-            var file = null;
-            $.ajax({
-                type: 'GET',
-                url: '../static/crime_type2.json',
-                async: false,
-                dataType: 'json',
-                success: function(data) {
-                    file = data;
-                }
-            });
-            return file;
-        })();
+        //var crime_url = (function getCrime(){
+        //    var file = null;
+        //    $.ajax({
+        //        type: 'GET',
+        //        url: '../static/crime_type2.json',
+        //        async: false,
+        //        dataType: 'json',
+        //        success: function(data) {
+        //            file = data;
+        //        }
+        //    });
+        //    return file;
+        //})();
 
 
 		var data =(function jsontovar(){
 			var file = null;
-            console.log(crime_url['url']),
+            //console.log(crime_url['url']),
 			$.ajax({
 			    type: 'GET',
 			    url: '../static/data.json',
@@ -123,6 +123,7 @@
 			});
 			return file;
 		})();
+
 
         var percentile_data=(function get_percentile(){
             var file = null;
@@ -265,9 +266,9 @@
 
 	        	return ({
             		fillColor: color,
-			        fillOpacity: 0.75,
+			        fillOpacity: 0.6,
             		strokeColor: 'white',
-            		strokeWeight: 0.4
+            		strokeWeight: 0.15
           		});
 
 	        }

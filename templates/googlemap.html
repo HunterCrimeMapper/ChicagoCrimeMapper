@@ -28,13 +28,13 @@
           height: 45px;
         }
 	#controls2 {
-          top: 50px;
+          top: 65px;
           left: 110px;
           width: 360px;
           height: 30px;
         }
         #data-box {
-      top: 90px;
+      top: 105px;
       left: 110px;
       height: 45px;
       line-height: 45px;
@@ -79,6 +79,8 @@
 </head>
 <body>
 	<div id="controls" class="nicebox">
+	<div id="crime_info" style="font-size: 12px; font-weight: bold;"></div>
+      	<br>
       	<div id="legend">
         <div id="census-min">Low Crime</div>
         <div class="color-key"><span id="data-caret">&#x25c6;</span></div>
@@ -156,6 +158,22 @@
 
         console.log("The other data: ", other_data);
 
+	onload =(function querytovar(){
+            var data = null;
+            $.ajax({
+                type: 'GET',
+                contentType: 'application/json',
+                url: '/get_data',
+                success: function(e){
+                    console.log("This is in the html JS: ", e.crime);
+                    crime_info.innerHTML = e.crime;
+                    return crime_info.innerHTML;
+                },
+                error: function(error){
+                    console.log("Is it an error? ", error);
+                }
+            })
+          })();
 
 		var data =(function jsontovar(){
 			var file = null;

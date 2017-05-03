@@ -116,14 +116,18 @@ $(document).ready(function runit(){
         <input class="form-control" id="end_date" name="end_date" placeholder="YYYY-MM-DD" type="text"/>
       </div>
       <div class="form-group"> <!-- Submit button -->
-        <button class="btn btn-primary " name="submit" type="submit">Submit</button>
+        <button class="btn btn-primary " name="submit_dates" id="submit_dates" type="submit">Submit</button>
       </div>
  </form>
     </div>
    </div>
 </div>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function(e){
+      //$("#submit_dates").click(function(e){
+      //  e.preventDefault();
+      //  console.log("GOT IN HERE");
+      //});
       var date_input=$('input[name="start_date"]'); //our date input has the name "date"
       var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
       var options={
@@ -133,8 +137,9 @@ $(document).ready(function runit(){
         autoclose: true,
       };
       date_input.datepicker(options);
-      console.log("date_input: ", date_input.name);
-	  
+      //var from_date = $(start_date).datepicker( "getDate" );
+
+
       var date_input_=$('input[name="end_date"]'); //our date input has the name "date"
       var container_=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
       var options_={
@@ -144,7 +149,39 @@ $(document).ready(function runit(){
         autoclose: true,
       };
       date_input_.datepicker(options_);
-      console.log("date_input: ", date_input_.name);	  
+      //var to_date = $(end_date).datepicker( "getDate" );
+      //if (window.crime == NULL){
+      //  window.crime = 'Burglary';
+      //}
+
+      //var crime_info = {'crime': window.crime, 'start': from_date, 'end': to_date};
+
+      //console.log("before: ", crime_info);
+        $("#submit_dates").click(function(e){
+            e.preventDefault();
+            var from_date = $(start_date).datepicker("getDate");
+            var to_date = $(end_date).datepicker("getDate");
+            if (window.crime == null){
+                window.crime = 'Burglary';
+            }
+            var crime_info = {'crime': window.crime, 'start': from_date, 'end': to_date};
+            console.log("Here: ", crime_info);
+             $.ajax({
+               type: 'POST',
+               contentType: 'application/json',
+               data: JSON.stringify(crime_info),
+               dataType: 'json',
+               url: '/crime_data',
+               success: function(e){
+                   console.log(crime_info);
+                   window.location = '/crime_data';
+               },
+               error: function(error){
+                   console.log(error);
+               }
+             });
+         });
+
     });
 
 </script>

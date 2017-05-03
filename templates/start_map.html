@@ -20,6 +20,10 @@
 
 <script type="text/javascript" src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
 
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
 
  <!-- Include Date Range Picker -->
 <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
@@ -100,6 +104,79 @@ $(document).ready(function runit(){
       </ul>
 
 
+<div class="container-fluid">
+  <div class="row">
+   <div class="col-md-6 col-sm-6 col-xs-12">
+
+ <form method="post">
+      <div class="form-group"> <!-- Date input -->
+        <label class="label label-success" for="start_date">START DATE</label>
+        <input class="form-control" id="start_date" name="start_date" placeholder="YYYY-MM-DD" type="text"/>
+      </div>
+      <div class="form-group"> <!-- Date input -->
+        <label class="label label-danger" for="end_date">END DATE</label>
+        <input class="form-control" id="end_date" name="end_date" placeholder="YYYY-MM-DD" type="text"/>
+      </div>
+      <div class="form-group"> <!-- Submit button -->
+        <button class="btn btn-primary " name="submit_dates" id="submit_dates" type="submit">Submit</button>
+      </div>
+ </form>
+    </div>
+   </div>
+</div>
+
+
+<script>
+	$(document).ready(function(e){
+	  var date_input=$('input[name="start_date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'yyyy-mm-dd',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+
+	  var date_input_=$('input[name="end_date"]'); //our date input has the name "date"
+      var container_=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options_={
+        format: 'yyyy-mm-dd',
+        container: container_,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input_.datepicker(options_);
+
+	  $("#submit_dates").click(function(e){
+            e.preventDefault();
+            var from_date = $(start_date).datepicker("getDate");
+            var to_date = $(end_date).datepicker("getDate");
+            if (window.crime == null){
+                window.crime = 'Burglary';
+            }
+            var crime_info = {'crime': window.crime, 'start': from_date, 'end': to_date};
+					$.ajax({
+                            type: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify(crime_info),
+                            dataType: 'json',
+                            url: '/crime_data',
+                            success: function(e){
+                                console.log(e);
+                                window.location = '/mapview';
+                                //document.getElementById('theMap').contentWindow.location.reload();
+                            },
+                            error: function(error) {
+                            console.log(error);
+                            }
+                   	});
+          });
+	});
+</script>
+
+
+<!--
       <form class="navbar-form navbar-left">
         <div class="form-group">
           <input type="text" class="form-control" name="daterange" value="01/01/2001 - 04/19/2017" size="60" style="text-align:center">
@@ -127,7 +204,7 @@ $(document).ready(function runit(){
                         window.start = start;
                         window.end = end;
                         if (window.crime == null){
-                            window.crime = 'Arson';
+                            window.crime = 'Burglary';
                         }
                         var crime_info = {'crime': window.crime, 'start': window.start._d, 'end': window.end._d};
                         $(document).ready(function(){
@@ -155,6 +232,9 @@ $(document).ready(function runit(){
 			</script>
         </div>
       </form>
+
+-->
+
       <ul class="nav navbar-nav navbar-right">
 	<li><a href="https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-present/ijzp-q8t2/data" target="_blank" style ="color:#d9d9d9">Data Source</a></li>
 	<li><a href="{{ url_for('group_info') }}" target="_blank" style ="color:#d9d9d9">About the Team</a></li>

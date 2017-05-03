@@ -59,14 +59,14 @@ $(document).ready(function runit(){
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#" style="color:#d9d9d9">Chicago Crime Mapper</a>
+      <a class="navbar-brand" href="#" style="color:#d9d9d9">Home</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
 		<li class="dropdown">
-          <a href="#" id="theTitle" class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-haspopup="true" aria-expanded="false" style ="color:#d9d9d9">Select Crime Type<span class="caret"></span></a>
+          <a href="#" id="theTitle" class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-haspopup="true" aria-expanded="false" style ="color:#d9d9d9">Crime Types<span class="caret"></span></a>
           <ul class="dropdown-menu"  id="diff_crimes" style="height:auto; max-height:200px; overflow-x:hidden;">
             <li><a href="#" class="small" data-value="Arson" tabIndex="0"> Arson</a></li>
 			<li><a href="#" class="small" data-value="Assault" tabIndex="1"> Assault</a></li>
@@ -134,7 +134,19 @@ $(document).ready(function runit(){
       };
       date_input.datepicker(options);
       console.log("date_input: ", date_input.name);
-    })
+	  
+      var date_input_=$('input[name="end_date"]'); //our date input has the name "date"
+      var container_=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options_={
+        format: 'yyyy-mm-dd',
+        container: container_,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input_.datepicker(options_);
+      console.log("date_input: ", date_input_.name);	  
+    });
+
 </script>
 
       <!--
@@ -173,14 +185,12 @@ $(document).ready(function runit(){
                         console.log(crime_info);
                 });
             });
-
-
 			</script>
         </div>
       </form>
       < -->
       <ul class="nav navbar-nav navbar-right">
-      	<li><a href="{{ url_for('get_crime_data') }}" style ="color:#d9d9d9">Re-Center Map</a></li>
+      	<li><a href="#" style ="color:#d9d9d9">Compare</a></li>
 	<li><a href="https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-present/ijzp-q8t2/data" target="_blank" style ="color:#d9d9d9">Data Source</a></li>
 	<li><a href="http://69.120.125.192:4009/" target="_blank" style ="color:#d9d9d9">About the Team</a></li>
       </ul>

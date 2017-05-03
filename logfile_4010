@@ -1,0 +1,2 @@
+146.95.40.230 - - [03/May/2017:18:45:52 -0400] "GET / HTTP/1.1" 200 12393 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:53.0) Gecko/20100101 Firefox/53.0"
+146.95.40.230 - - [03/May/2017:18:45:53 -0400] "GET /start_map HTTP/1.1" 200 3028 "http://69.120.125.192:4010/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:53.0) Gecko/20100101 Firefox/53.0"

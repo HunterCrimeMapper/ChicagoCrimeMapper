@@ -155,6 +155,9 @@ $(document).ready(function runit(){
             if (window.crime == null){
                 window.crime = 'Burglary';
             }
+            if (from_date === null || to_date === null){
+                alert("Please enter a start and end date.");
+            }
             var crime_info = {'crime': window.crime, 'start': from_date, 'end': to_date};
 					$.ajax({
                             type: 'POST',
